@@ -18,7 +18,7 @@ function Navbar() {
         </Text>
       </Box>
       <Box>
-        <Link href="/main">
+        <Link href="/desktop">
           <Button
             w={"max"}
             position={"absolute"}

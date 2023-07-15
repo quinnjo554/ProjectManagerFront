@@ -6,7 +6,7 @@ function LandingHero() {
     <Box zIndex={"-1"} top="0" w="100%" h="100vh" className="landing">
       <Box
         w="100%"
-        h="41rem"
+        h="37rem"
         className="bannerOne"
         borderRadius="lg"
         display="flex"
@@ -29,7 +29,7 @@ function LandingHero() {
           src={SideImg.src}
           display="block"
           float="right"
-          w="32%"
+          w="29%"
           h="100%"
           mt="4rem"
           ml="4rem"
@@ -40,6 +40,7 @@ function LandingHero() {
       <Box
         h="30rem"
         w="100%"
+        mt={"-10"}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -61,7 +62,7 @@ function LandingHero() {
       </Box>
 
       <Box
-        h="20rem"
+        h="19rem"
         w="100%"
         display="flex"
         alignItems="center"
