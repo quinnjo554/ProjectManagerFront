@@ -18,7 +18,7 @@ function Navbar() {
         </Text>
       </Box>
       <Box>
-        <Link href="/api/auth/signin?callbackUrl=/desktop/">
+        <Link href="/api/auth/signin?callbackUrl=/desktop/main">
           <Button
             w={"max"}
             position={"absolute"}
@@ -31,7 +31,7 @@ function Navbar() {
             Sign up
           </Button>
         </Link>
-        <Link href="/api/auth/signout">
+        <Link href="/api/auth/signout?callbackUrl=/">
           <Button
             w={"max"}
             position={"absolute"}
