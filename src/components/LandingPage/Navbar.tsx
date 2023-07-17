@@ -18,7 +18,7 @@ function Navbar() {
         </Text>
       </Box>
       <Box>
-        <Link href="/desktop">
+        <Link href="/api/auth/signin?callbackUrl=/desktop/">
           <Button
             w={"max"}
             position={"absolute"}
@@ -29,6 +29,19 @@ function Navbar() {
             _hover={{ bg: "twitter.700" }}
           >
             Sign up
+          </Button>
+        </Link>
+        <Link href="/api/auth/signout">
+          <Button
+            w={"max"}
+            position={"absolute"}
+            right={"20"}
+            top={"5"}
+            bg={"twitter.500"}
+            textColor={"white"}
+            _hover={{ bg: "twitter.700" }}
+          >
+            Sign out
           </Button>
         </Link>
       </Box>
