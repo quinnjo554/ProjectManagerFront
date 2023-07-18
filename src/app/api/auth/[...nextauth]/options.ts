@@ -1,6 +1,7 @@
 import type {NextAuthOptions} from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { User } from '@/models/User';
 //dave grey next auth vid
 export const options: NextAuthOptions ={
     providers: [
@@ -11,10 +12,10 @@ export const options: NextAuthOptions ={
         CredentialsProvider({
             name: "Credentials",
             credentials: {
-                username:{
-                    label: "Username:",
+                email:{
+                    label: "Email:",
                     type: "text",
-                    placeholder: "Username",
+                    placeholder: "Email",
 
                },
                password:{
@@ -24,14 +25,18 @@ export const options: NextAuthOptions ={
             },
             async authorize(credentials){
                 //database set up https://next-auth.js.org/configuration/providers/credentials
-                 const user = {id:"1", name: "quinn", password: "pass"}
-                 if(credentials?.username === user.name && credentials.password === user.password){
-                    return user
+                 const getUser = await fetch(`http://localhost:9081/User/email/${credentials?.email}`,{
+                   method:'GET',
+                 });
+                 const user = await getUser.json();
+                 console.log(user);
+                 if(getUser.ok && user.password === credentials?.password){
+                 return user
                  }
                  else{
                     return null
                  }
-            }
+            }       
         })
     ],
 
