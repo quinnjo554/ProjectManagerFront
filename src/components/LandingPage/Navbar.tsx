@@ -35,7 +35,7 @@ function Navbar() {
               textColor={"white"}
               _hover={{ bg: "twitter.700" }}
             >
-              Sign in
+              Sign out
             </Button>
           </Link>
         ) : (
@@ -43,13 +43,13 @@ function Navbar() {
             <Button
               w={"max"}
               position={"absolute"}
-              right={"20"}
+              right={"5"}
               top={"5"}
               bg={"twitter.500"}
               textColor={"white"}
               _hover={{ bg: "twitter.700" }}
             >
-              Sign out
+              Sign in
             </Button>
           </Link>
         )}
