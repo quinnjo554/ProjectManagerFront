@@ -42,7 +42,7 @@ function ProjectList(props: { email: string | undefined | null }) {
     <Flex direction="column" gap={4} m={4} w="max" rounded="full">
       {userProj && user ? (
         userProj.map((value, index) => (
-          <Card boxShadow={"dark-lg"} key={index} maxW="md">
+          <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md">
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -52,9 +52,21 @@ function ProjectList(props: { email: string | undefined | null }) {
                     <Text>{user?.description}</Text>
                   </Box>
                 </Flex>
-                <Heading as="h2" size={"lg"}>
-                  {value.projectName}
-                </Heading>
+                <Box
+                  bg={"linkedin.500"}
+                  px={"8"}
+                  rounded={"2xl"}
+                  textColor="white"
+                  py={5}
+                  w={"max"}
+                  position="relative"
+                  top={"0"}
+                  right={"-10"}
+                >
+                  <Heading as="h2" size={"lg"}>
+                    {value.projectName}
+                  </Heading>
+                </Box>
               </Flex>
             </CardHeader>
             <CardBody>

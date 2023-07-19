@@ -25,9 +25,9 @@ function TaskList(props: { projectId: string }) {
     return <div>Loading</div>;
   }
   return (
-    <Box m={2} p={2} overflowY={"scroll"} rounded={"lg"}>
+    <Box m={2} p={2} height="15rem" overflowY={"scroll"} rounded={"lg"}>
       <Box rounded={"lg"} p={3} boxShadow={"dark-lg"}>
-        <Table variant="simple">
+        <Table variant="striped">
           <TableCaption></TableCaption>
           <Thead>
             <Tr>
