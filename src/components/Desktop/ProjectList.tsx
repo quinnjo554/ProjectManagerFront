@@ -15,22 +15,21 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { BiChat, BiInfoSquare, BiShare, BiBookmark } from "react-icons/bi";
-import { HiBookmark } from "react-icons/hi";
+import { BiInfoSquare, BiShare, BiBookmark } from "react-icons/bi";
+import TaskList from "./TaskList";
 function ProjectList(props: { email: string | undefined | null }) {
-  const [projectList, setProjectList] = useState<Project[]>([]);
-
   const {
     data: user,
     isLoading: userLoading,
     isError: userError,
   } = useUser(props.email);
+
   const {
     data: userProj,
     isLoading: userProjLoading,
     isError: userProjError,
   } = useProjectList(user?.userId);
+
   if (userLoading || userProjLoading) {
     return <Spinner />;
   }
@@ -38,19 +37,16 @@ function ProjectList(props: { email: string | undefined | null }) {
   if (userError || userProjError) {
     return <p>Error occurred while fetching data</p>;
   }
-
+  console.log(user);
   return (
     <Flex direction="column" gap={4} m={4} w="max" rounded="full">
-      {userProj ? (
+      {userProj && user ? (
         userProj.map((value, index) => (
           <Card boxShadow={"dark-lg"} key={index} maxW="md">
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar
-                    name={user?.email as string}
-                    src={user?.img as string}
-                  />
+                  <Avatar name={user?.userName ?? ""} src={user?.img ?? ""} />
                   <Box>
                     <Heading size="sm">{user?.userName}</Heading>
                     <Text>{user?.description}</Text>
@@ -64,11 +60,7 @@ function ProjectList(props: { email: string | undefined | null }) {
             <CardBody>
               <Text>{value.description}</Text>
             </CardBody>
-            <Image
-              objectFit="cover"
-              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-              alt="Chakra UI"
-            />
+            <TaskList projectId={String(value.projectId)}></TaskList>
             <CardFooter
               justify="space-between"
               flexWrap="wrap"
