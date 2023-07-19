@@ -6,7 +6,7 @@ import ProjectList from "./ProjectList";
 function ProjectDisplay(props: { user: User }) {
   return (
     //if the user hasnt been regeserted then render the tutorial on how to start
-    <Box>
+    <Box overflow={"scroll"}>
       <ProjectList email={props.user?.email}></ProjectList>
     </Box>
   );
