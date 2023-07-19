@@ -7,6 +7,7 @@ import { User } from "@/models/User";
 import { useUser } from "@/queries/getQueries";
 
 function Desktop(props: { user: User }) {
+    //make test
   return (
     <Box>
       <DesktopNav />
