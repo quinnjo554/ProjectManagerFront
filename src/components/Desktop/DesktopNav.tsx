@@ -17,11 +17,29 @@ import {
   MenuList,
   MenuItem,
   Flex,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerFooter,
+  Input,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import React from "react";
-
-function DesktopNav() {
+import { useSession } from "next-auth/react";
+import { User } from "@/models/User";
+import { useUser } from "@/queries/getQueries";
+function DesktopNav(props: { user: User }) {
+  const {
+    data: user,
+    isLoading: userLoading,
+    isError: userError,
+  } = useUser(props.user?.email);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const avtRef = React.useRef();
   return (
     <Box
       display="flex"
@@ -84,7 +102,32 @@ function DesktopNav() {
           <ChevronDownIcon color="white" ml={1} mt="3" />
         </ListItem>
       </List>
-      <Avatar ml="auto" />
+      <Avatar
+        as={"button"}
+        bg={"gray.100"}
+        p={"2px"}
+        ml="auto"
+        name={user?.userName ?? "quinn"}
+        src={user?.img ?? ""}
+        onClick={onOpen}
+      />
+      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerBody>
+            <Input placeholder="Type here..." />
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="blue">Save</Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 }

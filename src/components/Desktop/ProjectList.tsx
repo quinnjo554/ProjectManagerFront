@@ -10,12 +10,10 @@ import {
   CardHeader,
   Flex,
   Heading,
-  IconButton,
-  Image,
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import { BiInfoSquare, BiShare, BiBookmark } from "react-icons/bi";
+import { BiInfoSquare, BiBookmark } from "react-icons/bi";
 import TaskList from "./TaskList";
 function ProjectList(props: { email: string | undefined | null }) {
   const {
@@ -39,7 +37,17 @@ function ProjectList(props: { email: string | undefined | null }) {
   }
   console.log(user);
   return (
-    <Flex direction="column" gap={4} m={4} w="max" rounded="full">
+    <Flex
+      direction="row"
+      justifyContent={"center"}
+      gap={4}
+      m={7}
+      ml={"16"}
+      w="max"
+      maxH={"lg"}
+      rounded={"2xl"}
+      boxShadow={"2xl"}
+    >
       {userProj && user ? (
         userProj.map((value, index) => (
           <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md">
@@ -54,17 +62,17 @@ function ProjectList(props: { email: string | undefined | null }) {
                 </Flex>
                 <Box
                   bg={"linkedin.500"}
-                  px={"8"}
+                  px={8}
                   rounded={"2xl"}
                   textColor="white"
-                  py={5}
+                  py={3}
                   w={"max"}
                   position="relative"
                   top={"0"}
                   right={"-10"}
                 >
                   <Heading as="h2" size={"lg"}>
-                    {value.projectName}
+                    {value.projectName.split(" ")[0]}
                   </Heading>
                 </Box>
               </Flex>
