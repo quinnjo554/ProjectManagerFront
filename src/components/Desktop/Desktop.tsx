@@ -7,10 +7,10 @@ import { User } from "@/models/User";
 import { useUser } from "@/queries/getQueries";
 
 function Desktop(props: { user: User }) {
-    //make test
+  //make test
   return (
     <Box>
-      <DesktopNav />
+      <DesktopNav user={props.user} />
       <ProjectDisplay user={props.user} />
     </Box>
   );
