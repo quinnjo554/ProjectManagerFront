@@ -16,6 +16,7 @@ import {
 import { BiInfoSquare, BiBookmark } from "react-icons/bi";
 import TaskList from "./TaskList";
 import { useState } from "react";
+import Link from "next/link";
 function ProjectList(props: { email: string | undefined | null }) {
   const {
     data: user,
@@ -105,9 +106,11 @@ function ProjectList(props: { email: string | undefined | null }) {
               <Button flex="1" variant="ghost" leftIcon={<BiBookmark />}>
                 Pin
               </Button>
-              <Button flex="1" variant="ghost" leftIcon={<BiInfoSquare />}>
-                View Project
-              </Button>
+              <Link href={`/project/${value.projectId}`}>
+                <Button flex="1" variant="ghost" leftIcon={<BiInfoSquare />}>
+                  View Project
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         ))
