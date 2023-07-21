@@ -8,7 +8,13 @@ function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <Box display={"grid"} w={"full"} h={"20"} bg={"black"} rounded={"md"}>
+    <Box
+      display={"grid"}
+      w={"full"}
+      h={"20"}
+      bg={"facebook.800"}
+      rounded={"md"}
+    >
       <Box>
         <Image src=""></Image>
         <Text
