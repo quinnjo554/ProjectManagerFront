@@ -104,13 +104,17 @@ function DesktopNav(props: { user: User }) {
         </ListItem>
       </List>
       <Avatar
+        className="avatar-hover"
         as={"button"}
-        bg={"gray.100"}
+        bg={"none"}
         p={"2px"}
         ml="auto"
         name={user?.userName ?? "quinn"}
         src={user?.img ?? ""}
         onClick={onOpen}
+        _hover={{
+          bg: "gray.100",
+        }}
       />
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />

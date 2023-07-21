@@ -1,6 +1,6 @@
 import { User } from "@/models/User";
 import { Box } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import ProjectList from "./ProjectList";
 
 function ProjectDisplay(props: { user: User }) {
