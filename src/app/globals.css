@@ -6,3 +6,18 @@
 .landing{
   height: 200vh;
 }
+
+/* styles.css (or your CSS file) */
+.avatar-hover {
+  transition: background-color 0.2s ease-out;
+}
+@keyframes cardAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

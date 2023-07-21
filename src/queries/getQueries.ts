@@ -2,7 +2,7 @@ import { Project } from "@/models/Project";
 import { Task } from "@/models/Task";
 import { User } from "@/models/User";
 import { StatGroupProps } from "@chakra-ui/react";
-import { UseQueryResult, useQuery } from "react-query";
+import { QueryFunctionContext, UseQueryResult, useQuery } from "react-query";
 
  export function useProjectList(userId:string|undefined): UseQueryResult<Project[], unknown>{
     return useQuery(['Project',userId], async ()=>{
@@ -29,6 +29,20 @@ export function useTaskProject(projectId:string) : UseQueryResult<Task, unknown>
     })
 }
 
+export function useUserTasks(userId: string): UseQueryResult<Task, unknown> {
+    const queryKey = ['Task', userId];
+    const fetchTasks = async (context: QueryFunctionContext) => {
+      const response = await fetch(`http://localhost:9081/Task/user/${context.queryKey[1]}`);
+      const data = await response.json();
+      return data;
+    };
+  
+    const options = {
+      enabled: !!userId, // Set to false if userId is not available
+    };
+  
+    return useQuery<Task, unknown>(queryKey, fetchTasks, options);
+  }
 
 export function useUser(email: string | undefined | null): UseQueryResult<User, unknown> {
     return useQuery(['User', email], async () => {

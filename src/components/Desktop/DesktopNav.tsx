@@ -29,7 +29,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import React from "react";
-import { useSession } from "next-auth/react";
+import Logo from "../../../public/fillin.png";
 import { User } from "@/models/User";
 import { useUser } from "@/queries/getQueries";
 function DesktopNav(props: { user: User }) {
@@ -40,18 +40,19 @@ function DesktopNav(props: { user: User }) {
   } = useUser(props.user?.email);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const avtRef = React.useRef();
+  //add search bar to search users to message or add to proj
   return (
     <Box
       display="flex"
       alignItems="center"
       h="20"
-      bg="facebook.500"
+      bg="twitter.700"
       rounded="md"
       px="4"
       shadow="lg"
     >
       <Flex alignItems="center" mr="4">
-        <Image src="/logo.jpeg" boxSize="12" alt="Logo" />
+        <Image src={Logo.src} boxSize="12" alt="Logo" />
         <Text as="h1" ml="2" fontSize="3xl" color="white" fontWeight="semibold">
           Project Manager
         </Text>
@@ -103,28 +104,39 @@ function DesktopNav(props: { user: User }) {
         </ListItem>
       </List>
       <Avatar
+        className="avatar-hover"
         as={"button"}
-        bg={"gray.100"}
+        bg={"none"}
         p={"2px"}
         ml="auto"
         name={user?.userName ?? "quinn"}
         src={user?.img ?? ""}
         onClick={onOpen}
+        _hover={{
+          bg: "gray.100",
+        }}
       />
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Hi {user?.userName}</DrawerHeader>
           <DrawerBody>
             <Input placeholder="Type here..." />
           </DrawerBody>
-
           <DrawerFooter>
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="blue">Save</Button>
+            <Button
+              as={Link}
+              href="/api/auth/signout?callbackUrl=/ "
+              bg={"twitter.500"}
+              textColor={"white"}
+              _hover={{ bg: "twitter.700" }}
+            >
+              Sign out
+            </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

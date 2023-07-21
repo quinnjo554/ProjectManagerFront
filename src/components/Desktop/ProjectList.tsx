@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { BiInfoSquare, BiBookmark } from "react-icons/bi";
 import TaskList from "./TaskList";
+import { useState } from "react";
 function ProjectList(props: { email: string | undefined | null }) {
   const {
     data: user,
@@ -35,7 +36,8 @@ function ProjectList(props: { email: string | undefined | null }) {
   if (userError || userProjError) {
     return <p>Error occurred while fetching data</p>;
   }
-  console.log(user);
+  //on hover have the blue banner appear
+  // add some transitions
   return (
     <Flex
       direction="row"
@@ -46,11 +48,19 @@ function ProjectList(props: { email: string | undefined | null }) {
       w="max"
       maxH={"lg"}
       rounded={"2xl"}
-      boxShadow={"2xl"}
     >
       {userProj && user ? (
         userProj.map((value, index) => (
-          <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md">
+          <Card
+            overflow={"hidden"}
+            boxShadow={"dark-lg"}
+            key={index}
+            maxW="md"
+            style={{
+              animation: `cardAnimation .6s ease-in-out ${index * 0.1}s`,
+              animationDelay: ".1s",
+            }}
+          >
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -78,7 +88,9 @@ function ProjectList(props: { email: string | undefined | null }) {
               </Flex>
             </CardHeader>
             <CardBody>
-              <Text>{value.description}</Text>
+              <Text boxShadow={"lg"} p="3" rounded="md">
+                {value.description}
+              </Text>
             </CardBody>
             <TaskList projectId={String(value.projectId)}></TaskList>
             <CardFooter
