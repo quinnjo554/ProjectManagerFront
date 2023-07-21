@@ -35,6 +35,8 @@ function ProjectList(props: { email: string | undefined | null }) {
   if (userError || userProjError) {
     return <p>Error occurred while fetching data</p>;
   }
+  //on hover have the blue banner appear 
+  // add some transitions
   console.log(user);
   return (
     <Flex
@@ -46,7 +48,6 @@ function ProjectList(props: { email: string | undefined | null }) {
       w="max"
       maxH={"lg"}
       rounded={"2xl"}
-      boxShadow={"2xl"}
     >
       {userProj && user ? (
         userProj.map((value, index) => (
@@ -78,7 +79,9 @@ function ProjectList(props: { email: string | undefined | null }) {
               </Flex>
             </CardHeader>
             <CardBody>
-              <Text>{value.description}</Text>
+              <Text boxShadow={"lg"} p="3" rounded="md">
+                {value.description}
+              </Text>
             </CardBody>
             <TaskList projectId={String(value.projectId)}></TaskList>
             <CardFooter
