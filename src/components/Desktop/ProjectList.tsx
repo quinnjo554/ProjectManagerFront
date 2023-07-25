@@ -56,7 +56,8 @@ function ProjectList(props: { email: string | undefined | null }) {
             overflow={"hidden"}
             boxShadow={"dark-lg"}
             key={index}
-            maxW="md"
+            maxW={"lg"}
+            size={"sm"}
             style={{
               animation: `cardAnimation .6s ease-in-out ${index * 0.1}s`,
               animationDelay: ".1s",
@@ -76,7 +77,7 @@ function ProjectList(props: { email: string | undefined | null }) {
                   px={8}
                   rounded={"2xl"}
                   textColor="white"
-                  py={3}
+                  py={2}
                   w={"max"}
                   position="relative"
                   top={"0"}
@@ -89,7 +90,13 @@ function ProjectList(props: { email: string | undefined | null }) {
               </Flex>
             </CardHeader>
             <CardBody>
-              <Text boxShadow={"lg"} p="3" rounded="md">
+              <Text
+                boxShadow={"lg"}
+                p={3}
+                maxH={"100px"}
+                overflow={"scroll"}
+                rounded="md"
+              >
                 {value.description}
               </Text>
             </CardBody>

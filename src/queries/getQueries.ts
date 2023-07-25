@@ -29,6 +29,14 @@ export function useTaskProject(projectId:string) : UseQueryResult<Task, unknown>
     })
 }
 
+export function useUserContaining(query:string):UseQueryResult<User[],unknown>{
+  return useQuery(["User",query], async () => {
+    const response = await fetch(`http://localhost:9081/User/email/containing/${query}`)
+    const data = await response.json();
+    return data
+  })
+}
+
 export function useUserTasks(userId: string): UseQueryResult<Task, unknown> {
     const queryKey = ['Task', userId];
     const fetchTasks = async (context: QueryFunctionContext) => {

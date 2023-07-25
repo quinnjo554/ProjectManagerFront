@@ -32,6 +32,7 @@ import React from "react";
 import Logo from "../../../public/fillin.png";
 import { User } from "@/models/User";
 import { useUser } from "@/queries/getQueries";
+import Search from "./Search";
 function DesktopNav(props: { user: User }) {
   const {
     data: user,
@@ -46,30 +47,30 @@ function DesktopNav(props: { user: User }) {
       display="flex"
       alignItems="center"
       h="20"
-      bg="twitter.700"
+      bg="whiteAlpha.400"
       rounded="md"
       px="4"
       shadow="lg"
+      textColor={"twitter.800"}
     >
       <Flex alignItems="center" mr="4">
         <Image src={Logo.src} boxSize="12" alt="Logo" />
-        <Text as="h1" ml="2" fontSize="3xl" color="white" fontWeight="semibold">
+        <Text as="h1" ml="2" fontSize="3xl" fontWeight="semibold">
           Project Manager
         </Text>
       </Flex>
       <List display="flex" ml="4">
         <ListItem
-          textColor="white"
-          fontSize="lg"
+          fontSize="xl"
           display="flex"
           alignItems="center"
           fontWeight="semibold"
           py={"5"}
-          _hover={{ borderBottom: "3px solid white" }}
+          _hover={{ borderBottom: "3px solid lightblue" }}
           transition="border-bottom 0.1s ease-in"
         >
           <Menu>
-            <MenuButton as={Text} mt={2} color="white">
+            <MenuButton as={Text} mt={2}>
               People
             </MenuButton>
             <MenuList textColor="black" mt={2}>
@@ -77,22 +78,21 @@ function DesktopNav(props: { user: User }) {
               <MenuItem>Direct Message</MenuItem>
             </MenuList>
           </Menu>
-          <ChevronDownIcon color="white" ml={1} mt="3" />
+          <ChevronDownIcon ml={1} mt="3" />
         </ListItem>
 
         <ListItem
-          textColor="white"
-          fontSize="lg"
+          fontSize="xl"
           display="flex"
           alignItems="center"
           fontWeight="semibold"
           ml={4}
           py={"5"}
           transition="border-bottom 0.1s"
-          _hover={{ borderBottom: "3px solid white" }}
+          _hover={{ borderBottom: "3px solid lightblue" }}
         >
           <Menu>
-            <MenuButton as={Text} mt={2} color="white">
+            <MenuButton as={Text} mt={2}>
               Projects
             </MenuButton>
             <MenuList textColor="black" mt={2}>
@@ -100,7 +100,10 @@ function DesktopNav(props: { user: User }) {
               <MenuItem>My Projects</MenuItem>
             </MenuList>
           </Menu>
-          <ChevronDownIcon color="white" ml={1} mt="3" />
+          <ChevronDownIcon ml={1} mt="3" />
+        </ListItem>
+        <ListItem mt="5" ml="10">
+          <Search></Search>
         </ListItem>
       </List>
       <Avatar
@@ -109,11 +112,12 @@ function DesktopNav(props: { user: User }) {
         bg={"none"}
         p={"2px"}
         ml="auto"
-        name={user?.userName ?? "quinn"}
+        size={"lg"}
+        name={user?.userName ?? ""}
         src={user?.img ?? ""}
         onClick={onOpen}
         _hover={{
-          bg: "gray.100",
+          bg: "black",
         }}
       />
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
