@@ -1,15 +1,21 @@
+import { UseRangeSliderProps } from "@chakra-ui/react";
 import { Project } from "./Project";
 import { User } from "./User";
 
 export type Task = {
-   content: [{
-    id?: string;
-    project?: Project;
-    taskName?: string;
+   tasks:{
+    task_id?: string;
+    project_id?: Project;
+    task_name?: string;
     status?: string;
   description?: string;
   priority?: string;
-  dueDate?: string;
-  assignee?: User; 
-   }]
+  due_date?: string;
+  assignee_id?: User; 
+   }[],users: {  user_id?: string | undefined;
+      username?: string | null | undefined;
+      email?: string | null | undefined;
+      password?: string | null | undefined;
+      img?: string | null | undefined;
+      description ?: string | null | undefined;}[]
 }
