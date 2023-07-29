@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 import { BiInfoSquare, BiBookmark } from "react-icons/bi";
 import TaskList from "./TaskList";
-import { useState } from "react";
 function ProjectList(props: { email: string | undefined | null }) {
   const {
     data: user,
@@ -27,17 +26,21 @@ function ProjectList(props: { email: string | undefined | null }) {
     data: userProj,
     isLoading: userProjLoading,
     isError: userProjError,
-  } = useProjectList(user?.userId);
+  } = useProjectList(user?.user_id ?? "2");
 
   if (userLoading || userProjLoading) {
     return <Spinner />;
   }
 
-  if (userError || userProjError) {
+  if (userError) {
     return <p>Error occurred while fetching data</p>;
   }
-  //on hover have the blue banner appear
+  if(userProjError){
+    return <p>Error from userProj</p>
+  }
+  //on hover have the blue banner appear 
   // add some transitions
+  console.log(user);
   return (
     <Flex
       direction="row"
@@ -51,22 +54,13 @@ function ProjectList(props: { email: string | undefined | null }) {
     >
       {userProj && user ? (
         userProj.map((value, index) => (
-          <Card
-            overflow={"hidden"}
-            boxShadow={"dark-lg"}
-            key={index}
-            maxW="md"
-            style={{
-              animation: `cardAnimation .6s ease-in-out ${index * 0.1}s`,
-              animationDelay: ".1s",
-            }}
-          >
+          <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md" size={"sm"}>
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar name={user?.userName ?? ""} src={user?.img ?? ""} />
+                  <Avatar name={user?.username ?? ""} src={user?.img ?? ""} />
                   <Box>
-                    <Heading size="sm">{user?.userName}</Heading>
+                    <Heading size="sm">{user.username}</Heading>
                     <Text>{user?.description}</Text>
                   </Box>
                 </Flex>
@@ -75,24 +69,24 @@ function ProjectList(props: { email: string | undefined | null }) {
                   px={8}
                   rounded={"2xl"}
                   textColor="white"
-                  py={3}
+                  py={2}
                   w={"max"}
                   position="relative"
                   top={"0"}
                   right={"-10"}
                 >
                   <Heading as="h2" size={"lg"}>
-                    {value.projectName.split(" ")[0]}
+                    {value.project_name.split(" ")[0]}
                   </Heading>
                 </Box>
               </Flex>
             </CardHeader>
             <CardBody>
-              <Text boxShadow={"lg"} p="3" rounded="md">
+              <Text boxShadow={"lg"} maxH={"100px"} overflowY={"scroll"}  p="3" rounded="md">
                 {value.description}
               </Text>
             </CardBody>
-            <TaskList projectId={String(value.projectId)}></TaskList>
+            <TaskList projectId={String(value.project_id)}></TaskList>
             <CardFooter
               justify="space-between"
               flexWrap="wrap"

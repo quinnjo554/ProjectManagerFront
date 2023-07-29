@@ -15,7 +15,7 @@ import { QueryFunctionContext, UseQueryResult, useQuery } from "react-query";
 
 export async function getUserProj(userId:string | undefined){
     const url = new URL(`http://localhost:9081/UserProject/GetForUser/${userId}`)
-        const response = await fetch(url.toString());
+        const response = await fetch(`http://localhost:9081/UserProject/GetForUser/${userId}`);
         const data = await response.json();
         return data;
 }

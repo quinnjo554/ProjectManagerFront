@@ -1,5 +1,5 @@
 import { User } from "@/models/User";
-import { useUser, useUserTasks } from "@/queries/getQueries";
+import { useTaskProject, useUser, useUserTasks } from "@/queries/getQueries";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Box,
@@ -24,7 +24,8 @@ function UserTasks(props: { user: User }) {
     data: tasks,
     isLoading: tasksLoading,
     isError: tasksError,
-  } = useUserTasks(user?.userId ?? "");
+  } = useUserTasks(user?.user_id ?? "1");
+
 
   if (userLoading || tasksLoading) {
     return <h1>Loading</h1>;
@@ -37,7 +38,6 @@ function UserTasks(props: { user: User }) {
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
-            <Th>Project</Th>
             <Th>Task Name</Th>
             <Th>Description</Th>
             <Th>Priority</Th>
@@ -47,8 +47,8 @@ function UserTasks(props: { user: User }) {
         </Thead>
         <Tbody>
           <AnimatePresence>
-            {tasks?.content && tasks.content.length > 0 ? (
-              tasks.content.map((value, index) => (
+            {tasks?.tasks.length && tasks.tasks.length > 0 ? (
+              tasks.tasks.map((value, index) => (
                 <motion.tr
                   key={index}
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -56,11 +56,10 @@ function UserTasks(props: { user: User }) {
                   exit={{ scale: 0.8, opacity: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <Td>{value.project?.projectName}</Td>
-                  <Td>{value.taskName}</Td>
+                  <Td>{value.task_name}</Td>
                   <Td>{value.description}</Td>
                   <Td>{value.priority}</Td>
-                  <Td>{value.dueDate}</Td>
+                  <Td>{value.due_date}</Td>
                   <Td>{value.status}</Td>
                 </motion.tr>
               ))
