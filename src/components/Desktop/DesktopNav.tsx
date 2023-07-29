@@ -50,27 +50,23 @@ function DesktopNav(props: { user: User }) {
       rounded="md"
       px="4"
       shadow="lg"
-      textColor={"black"}
+      textColor={"twitter.800"}
     >
       <Flex alignItems="center" mr="4">
         <Image src={Logo.src} boxSize="12" alt="Logo" />
-        <Text as="h1" ml="2" fontSize="3xl"  fontWeight="semibold">
-          Welcome, {user?.username}
-        </Text>
       </Flex>
       <List display="flex" ml="4">
         <ListItem
           fontSize="xl"
           display="flex"
           alignItems="center"
-          textColor={"black"}
           fontWeight="semibold"
           py={"5"}
           _hover={{ borderBottom: "3px solid lightblue" }}
           transition="border-bottom 0.1s ease-in"
         >
           <Menu>
-            <MenuButton as={Text} mt={2} color="black">
+            <MenuButton as={Text} mt={2} >
               People
             </MenuButton>
             <MenuList textColor="black" mt={2}>
@@ -109,6 +105,7 @@ function DesktopNav(props: { user: User }) {
         bg={"none"}
         p={"2px"}
         ml="auto"
+        size={"lg"}
         name={user?.username ?? "quinn"}
         src={user?.img ?? ""}
         onClick={onOpen}

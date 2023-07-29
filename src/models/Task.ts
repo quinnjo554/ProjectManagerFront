@@ -5,7 +5,7 @@ import { User } from "./User";
 export type Task = {
    tasks:{
     task_id?: string;
-    project_id?: Project;
+    project_id?: number;
     task_name?: string;
     status?: string;
   description?: string;

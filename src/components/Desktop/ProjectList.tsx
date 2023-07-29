@@ -54,7 +54,7 @@ function ProjectList(props: { email: string | undefined | null }) {
     >
       {userProj && user ? (
         userProj.map((value, index) => (
-          <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md">
+          <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md" size={"sm"}>
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -69,7 +69,7 @@ function ProjectList(props: { email: string | undefined | null }) {
                   px={8}
                   rounded={"2xl"}
                   textColor="white"
-                  py={3}
+                  py={2}
                   w={"max"}
                   position="relative"
                   top={"0"}
@@ -82,7 +82,7 @@ function ProjectList(props: { email: string | undefined | null }) {
               </Flex>
             </CardHeader>
             <CardBody>
-              <Text boxShadow={"lg"} p="3" rounded="md">
+              <Text boxShadow={"lg"} maxH={"100px"} overflowY={"scroll"}  p="3" rounded="md">
                 {value.description}
               </Text>
             </CardBody>

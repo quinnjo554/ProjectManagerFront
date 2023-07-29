@@ -14,7 +14,7 @@ function Desktop(props: { user: User }) {
     <Box>
       <DesktopNav user={props.user} />
       <ProjectDisplay user={props.user}></ProjectDisplay>
-      <UserTasks user={props.user}></UserTasks>
+       <UserTasks user={props.user}></UserTasks>
     </Box>
   );
 }
