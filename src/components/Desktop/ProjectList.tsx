@@ -12,6 +12,7 @@ import {
   Heading,
   Spinner,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BiInfoSquare, BiBookmark } from "react-icons/bi";
 import TaskList from "./TaskList";
@@ -82,9 +83,11 @@ function ProjectList(props: { email: string | undefined | null }) {
               </Flex>
             </CardHeader>
             <CardBody>
-              <Text boxShadow={"lg"} maxH={"100px"} overflowY={"scroll"}  p="3" rounded="md">
+              <Tooltip label={value.description} hasArrow rounded={"md"}>
+              <Text isTruncated boxShadow={"lg"} maxH={"100px"}  p="3" rounded="md">
                 {value.description}
               </Text>
+             </Tooltip>
             </CardBody>
             <TaskList projectId={String(value.project_id)}></TaskList>
             <CardFooter
