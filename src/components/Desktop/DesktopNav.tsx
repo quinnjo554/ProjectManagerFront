@@ -32,6 +32,7 @@ import React from "react";
 import Logo from "../../../public/fillin.png";
 import { User } from "@/models/User";
 import { useUser } from "@/queries/getQueries";
+import UserSearch from "../Inputs/UserSearch/UserSearch";
 function DesktopNav(props: { user: User }) {
   const {
     data: user,
@@ -39,7 +40,6 @@ function DesktopNav(props: { user: User }) {
     isError: userError,
   } = useUser(props.user?.email);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const avtRef = React.useRef();
   //add search bar to search users to message or add to proj
   return (
     <Box
@@ -66,7 +66,7 @@ function DesktopNav(props: { user: User }) {
           transition="border-bottom 0.1s ease-in"
         >
           <Menu>
-            <MenuButton as={Text} mt={2} >
+            <MenuButton as={Text} mt={2}>
               People
             </MenuButton>
             <MenuList textColor="black" mt={2}>
@@ -88,7 +88,7 @@ function DesktopNav(props: { user: User }) {
           _hover={{ borderBottom: "3px solid lightblue" }}
         >
           <Menu>
-            <MenuButton as={Text} mt={2} >
+            <MenuButton as={Text} mt={2}>
               Projects
             </MenuButton>
             <MenuList textColor="black" mt={2}>
@@ -99,6 +99,7 @@ function DesktopNav(props: { user: User }) {
           <ChevronDownIcon color="black" ml={1} mt="3" />
         </ListItem>
       </List>
+      <UserSearch></UserSearch>
       <Avatar
         className="avatar-hover"
         as={"button"}
