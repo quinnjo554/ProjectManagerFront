@@ -54,3 +54,13 @@ export function useUser(email: string | undefined | null): UseQueryResult<User, 
       return data;
     });
   }
+export function useAllUsersEmail(email:string | undefined | null):UseQueryResult<User[],unknown>{
+  return useQuery(['User', email], async () => {
+    const url = new URL(`http://localhost:9081/User/email/all/${email}`);
+
+    const response = await fetch(url.toString());
+    const data = await response.json();
+
+    return data;
+  });
+}
