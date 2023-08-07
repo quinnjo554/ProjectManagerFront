@@ -30,7 +30,11 @@ function UserSearch() {
         onFocus={onOpen} // Open the dropdown when the search input is focused
         onBlur={onClose} // Close the dropdown when the search input loses focus
       />
-      <InputDropdown InputData={filteredUsers} isOpen={isOpen} />
+      <InputDropdown
+        onClose={onClose}
+        InputData={filteredUsers}
+        isOpen={isOpen}
+      />
     </Box>
   );
 }
