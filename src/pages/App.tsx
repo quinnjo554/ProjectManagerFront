@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Navbar from "./LandingPage/Navbar";
-import LandingHero from "./LandingPage/LandingHero";
+import Navbar from "../components/LandingPage/Navbar";
+import LandingHero from "../components/LandingPage/LandingHero";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 function App() {
   return (

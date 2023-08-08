@@ -1,6 +1,7 @@
 import { Project } from "@/models/Project";
 import { Task } from "@/models/Task";
 import { User } from "@/models/User";
+import { Message } from "@/models/Message";
 import { StatGroupProps } from "@chakra-ui/react";
 import { QueryFunctionContext, UseQueryResult, useQuery } from "react-query";
 
@@ -62,5 +63,15 @@ export function useAllUsersEmail(email:string | undefined | null):UseQueryResult
     const data = await response.json();
 
     return data;
+  });}
+
+ export function useAllMessagesForUser(sender:string | undefined, reciver:string | undefined):UseQueryResult<Message[],unknown>{
+  return useQuery(['Message', sender, reciver], async () => {
+    const url = new URL(`http://localhost:9081/Message/user/${reciver}/${sender}`);
+
+    const response = await fetch(url.toString());
+    const data = await response.json();
+
+    return data;
   });
-}
+ } 
