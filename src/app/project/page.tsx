@@ -1,10 +1,10 @@
-import Desktop from "@/components/Desktop/Desktop";
+import Desktop from "@/pages/Desktop/DesktopPage";
 import React from "react";
 import { getServerSession } from "next-auth/next";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 import { Session } from "inspector";
 import { redirect } from "next/navigation";
-import Project from "@/components/Project/Project";
+import Project from "@/pages/Project/ProjectPage";
 async function Page() {
   const session = await getServerSession(options);
   if (!session) {

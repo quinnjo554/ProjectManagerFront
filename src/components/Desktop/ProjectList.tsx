@@ -1,5 +1,5 @@
 import { Project } from "@/models/Project";
-import { getUserProj, useProjectList, useUser } from "@/queries/getQueries";
+import { getUserProj, useProjectList, useUser } from "@/hooks/getQueries";
 import {
   Avatar,
   Box,
@@ -36,10 +36,10 @@ function ProjectList(props: { email: string | undefined | null }) {
   if (userError) {
     return <p>Error occurred while fetching data</p>;
   }
-  if(userProjError){
-    return <p>Error from userProj</p>
+  if (userProjError) {
+    return <p>Error from userProj</p>;
   }
-  //on hover have the blue banner appear 
+  //on hover have the blue banner appear
   // add some transitions
   console.log(user);
   return (
@@ -55,7 +55,13 @@ function ProjectList(props: { email: string | undefined | null }) {
     >
       {userProj && user ? (
         userProj.map((value, index) => (
-          <Card overflow={"hidden"} boxShadow={"dark-lg"} key={index} maxW="md" size={"sm"}>
+          <Card
+            overflow={"hidden"}
+            boxShadow={"dark-lg"}
+            key={index}
+            maxW="md"
+            size={"sm"}
+          >
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -84,10 +90,16 @@ function ProjectList(props: { email: string | undefined | null }) {
             </CardHeader>
             <CardBody>
               <Tooltip label={value.description} hasArrow rounded={"md"}>
-              <Text isTruncated boxShadow={"lg"} maxH={"100px"}  p="3" rounded="md">
-                {value.description}
-              </Text>
-             </Tooltip>
+                <Text
+                  isTruncated
+                  boxShadow={"lg"}
+                  maxH={"100px"}
+                  p="3"
+                  rounded="md"
+                >
+                  {value.description}
+                </Text>
+              </Tooltip>
             </CardBody>
             <TaskList projectId={String(value.project_id)}></TaskList>
             <CardFooter

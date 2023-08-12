@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import App from "@/components/App";
+import App from "@/pages/Landing/LandingPage";
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryProvider } from "./context/ReactQueryProvider";

@@ -1,4 +1,4 @@
-import Desktop from "@/components/Desktop/Desktop";
+import Desktop from "@/pages/Desktop/DesktopPage";
 import React from "react";
 import { getServerSession } from "next-auth/next";
 import { options } from "@/app/api/auth/[...nextauth]/options";

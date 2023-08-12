@@ -16,7 +16,7 @@ function Navbar() {
       rounded={"md"}
     >
       <Box>
-        <Image src=""></Image>
+        <Image alt="" src=""></Image>
         <Text
           as={"h1"}
           mt={"5"}
