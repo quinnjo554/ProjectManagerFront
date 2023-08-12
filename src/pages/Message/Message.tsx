@@ -1,7 +1,7 @@
 "use client";
-import MessageBox from "@/components/Message/MessageBox";
+import MessageBox from "@/pages/Message/MessageBox";
 import { User } from "@/models/User";
-import { useUser } from "@/queries/getQueries";
+import { useUser } from "@/hooks/getQueries";
 import { Box } from "@chakra-ui/react";
 import React from "react";
 //fix the way you get the email

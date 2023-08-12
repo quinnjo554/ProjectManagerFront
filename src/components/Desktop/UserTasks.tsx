@@ -1,5 +1,5 @@
 import { User } from "@/models/User";
-import { useTaskProject, useUser, useUserTasks } from "@/queries/getQueries";
+import { useTaskProject, useUser, useUserTasks } from "@/hooks/getQueries";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Box,
@@ -25,7 +25,6 @@ function UserTasks(props: { user: User }) {
     isLoading: tasksLoading,
     isError: tasksError,
   } = useUserTasks(user?.user_id ?? "1");
-
 
   if (userLoading || tasksLoading) {
     return <h1>Loading</h1>;

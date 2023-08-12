@@ -1,5 +1,5 @@
 import { User } from "@/models/User";
-import { useAllMessagesForUser } from "@/queries/getQueries";
+import { useAllMessagesForUser } from "@/hooks/getQueries";
 import {
   Box,
   Flex,

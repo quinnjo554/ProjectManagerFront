@@ -1,7 +1,7 @@
 import { Box, Input, useDisclosure } from "@chakra-ui/react";
 import React, { ChangeEvent, useState } from "react";
 import { User } from "@/models/User"; // Assuming you have imported the useAllUsersEmail hook and User type
-import { useAllUsersEmail } from "@/queries/getQueries";
+import { useAllUsersEmail } from "@/hooks/getQueries";
 import InputDropdown from "../InputDropdown/InputDropdown";
 
 function UserSearch() {

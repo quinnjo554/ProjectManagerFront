@@ -1,6 +1,6 @@
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
-import SideImg from "../../../public/PlayOnComputerAtwindow.jpg";
-import Laptop from "../../../public/blog.png";
+import SideImg from "../../../../../public/PlayOnComputerAtwindow.jpg";
+import Laptop from "../../../../../public/blog.png";
 function LandingHero() {
   return (
     <Box zIndex={"-1"} top="0" w="100%" h="100vh" className="landing">
@@ -27,6 +27,7 @@ function LandingHero() {
         </Box>
         <Image
           src={SideImg.src}
+          alt=""
           display="block"
           float="right"
           w="29%"

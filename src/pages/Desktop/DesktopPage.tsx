@@ -1,12 +1,12 @@
 "use client";
 import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
-import DesktopNav from "@/components/Desktop/DesktopNav";
-import ProjectDisplay from "../components/Desktop/ProjectDisplay";
+import DesktopNav from "@/components/Navigation/DesktopNav/DesktopNav";
+import ProjectDisplay from "../../components/Desktop/ProjectDisplay";
 import { User } from "@/models/User";
-import { useUser } from "@/queries/getQueries";
-import UserTasks from "../components/Desktop/UserTasks";
-import ProjectList from "../components/Desktop/ProjectList";
+import { useUser } from "@/hooks/getQueries";
+import UserTasks from "../../components/Desktop/UserTasks";
+import ProjectList from "../../components/Desktop/ProjectList";
 
 function Desktop(props: { user: User }) {
   //make test

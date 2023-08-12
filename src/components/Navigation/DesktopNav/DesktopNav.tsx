@@ -29,10 +29,10 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import React from "react";
-import Logo from "../../../public/fillin.png";
+import Logo from "../../../../public/fillin.png";
 import { User } from "@/models/User";
-import { useUser } from "@/queries/getQueries";
-import UserSearch from "../Inputs/UserSearch/UserSearch";
+import { useUser } from "@/hooks/getQueries";
+import UserSearch from "../../Inputs/UserSearch/UserSearch";
 function DesktopNav(props: { user: User }) {
   const {
     data: user,
