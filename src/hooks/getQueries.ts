@@ -29,7 +29,7 @@ export function useTaskProject(projectId:string) : UseQueryResult<Task, unknown>
         return data;
     })
 }
-
+//get task from project id
 export function useUserTasks(userId: string): UseQueryResult<Task, unknown> {
     const queryKey = ['Task', userId];
     const fetchTasks = async (context: QueryFunctionContext) => {

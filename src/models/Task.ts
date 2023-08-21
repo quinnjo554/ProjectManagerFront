@@ -11,7 +11,7 @@ export type Task = {
   description?: string;
   priority?: string;
   due_date?: string;
-  assignee_id?: User; 
+  assignee_id?: string; 
    }[],users: {  user_id?: string | undefined;
       username?: string | null | undefined;
       email?: string | null | undefined;
