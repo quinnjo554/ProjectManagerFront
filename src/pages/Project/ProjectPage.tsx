@@ -4,7 +4,7 @@ import DesktopNav from "../../components/Navigation/DesktopNav/DesktopNav";
 import { Box } from "@chakra-ui/react";
 import { User } from "@/models/User";
 import ProjectTaskGrid from "./ProjectTaskGrid";
-import TaskCard from "./TaskCard";
+import TaskCard from "./components/TaskCard";
 
 function Project(props: { user: User; projectId: string }) {
   return (

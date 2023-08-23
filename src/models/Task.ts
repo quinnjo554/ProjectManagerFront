@@ -2,7 +2,7 @@ import { UseRangeSliderProps } from "@chakra-ui/react";
 import { Project } from "./Project";
 import { User } from "./User";
 
-export type Task = {
+export type Tasks = {
    tasks:{
     task_id?: string;
     project_id?: number;
