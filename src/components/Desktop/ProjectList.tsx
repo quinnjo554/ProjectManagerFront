@@ -10,6 +10,7 @@ import {
   CardHeader,
   Flex,
   Heading,
+  Link,
   Spinner,
   Text,
   Tooltip,
@@ -41,7 +42,6 @@ function ProjectList(props: { email: string | undefined | null }) {
   }
   //on hover have the blue banner appear
   // add some transitions
-  console.log(user);
   return (
     <Flex
       direction="row"
@@ -114,7 +114,13 @@ function ProjectList(props: { email: string | undefined | null }) {
               <Button flex="1" variant="ghost" leftIcon={<BiBookmark />}>
                 Pin
               </Button>
-              <Button flex="1" variant="ghost" leftIcon={<BiInfoSquare />}>
+              <Button
+                as={Link}
+                href={`/project/${value.project_id}`}
+                flex="1"
+                variant="ghost"
+                leftIcon={<BiInfoSquare />}
+              >
                 View Project
               </Button>
             </CardFooter>

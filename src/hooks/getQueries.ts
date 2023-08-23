@@ -1,5 +1,5 @@
 import { Project } from "@/models/Project";
-import { Task } from "@/models/Task";
+import { Tasks } from "@/models/Task";
 import { User } from "@/models/User";
 import { Message } from "@/models/Message";
 import { StatGroupProps } from "@chakra-ui/react";
@@ -21,7 +21,7 @@ export async function getUserProj(userId:string | undefined){
         return data;
 }
 
-export function useTaskProject(projectId:string) : UseQueryResult<Task, unknown>{
+export function useTaskProject(projectId:string) : UseQueryResult<Tasks, unknown>{
     return useQuery(['Task', projectId], async () =>{
         const response = await fetch(`http://localhost:9081/Task/project/${projectId}`);
         const data = await response.json();
@@ -29,8 +29,8 @@ export function useTaskProject(projectId:string) : UseQueryResult<Task, unknown>
         return data;
     })
 }
-
-export function useUserTasks(userId: string): UseQueryResult<Task, unknown> {
+//get task from project id
+export function useUserTasks(userId: string): UseQueryResult<Tasks, unknown> {
     const queryKey = ['Task', userId];
     const fetchTasks = async (context: QueryFunctionContext) => {
       const response = await fetch(`http://localhost:9081/Task/user/${context.queryKey[1]}`);
@@ -42,7 +42,7 @@ export function useUserTasks(userId: string): UseQueryResult<Task, unknown> {
       enabled: !!userId, // Set to false if userId is not available
     };
   
-    return useQuery<Task, unknown>(queryKey, fetchTasks, options);
+    return useQuery<Tasks, unknown>(queryKey, fetchTasks, options);
   }
 
 export function useUser(email: string | undefined | null): UseQueryResult<User, unknown> {

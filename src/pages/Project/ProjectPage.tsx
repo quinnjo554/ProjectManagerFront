@@ -3,13 +3,15 @@ import React from "react";
 import DesktopNav from "../../components/Navigation/DesktopNav/DesktopNav";
 import { Box } from "@chakra-ui/react";
 import { User } from "@/models/User";
-import TaskList from "../../components/Project/TaskList";
+import ProjectTaskGrid from "./ProjectTaskGrid";
+import TaskCard from "./components/TaskCard";
 
-function Project(props: { user: User }) {
+function Project(props: { user: User; projectId: string }) {
   return (
     <Box>
       <DesktopNav user={props.user} />
-      <TaskList></TaskList>
+      {/**<TaskCard description="" name="" assigneeId="1" status=""></TaskCard>**/}
+      <ProjectTaskGrid id={props.projectId} />
     </Box>
   );
 }
