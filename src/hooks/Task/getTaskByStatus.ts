@@ -5,12 +5,17 @@ import { Message } from "@/models/Message";
 import { StatGroupProps } from "@chakra-ui/react";
 import { QueryFunctionContext, UseQueryResult, useQuery } from "react-query";
 import { Task } from "@/models/Taskm";
-
- export function useTaskByStatus(projId:string|undefined, status:string|undefined): UseQueryResult<any, unknown>{
-    return useQuery(['Task',projId], async ()=>{
-    const url = new URL(`http://localhost:9081/Task/status/${projId}/${status}`)
-        const response = await fetch(url.toString());
-        const data = await response.json();
-        return data;
-    })
-}
+interface ApiResponse {
+    tasks: Task[]; // Assuming Task is the type for individual tasks
+  }
+  export function useTaskByStatus(
+    projId: string | undefined,
+    status: string | undefined
+  ): UseQueryResult<ApiResponse, unknown> {
+    return useQuery(['Task', projId, status], async () => {
+      const url = new URL(`http://localhost:9081/Task/status/${projId}/${status}`);
+      const response = await fetch(url.toString());
+      const data:ApiResponse = await response.json();
+      return data;
+    });
+  }

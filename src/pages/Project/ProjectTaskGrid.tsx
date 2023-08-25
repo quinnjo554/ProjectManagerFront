@@ -3,10 +3,10 @@ import { Box, Flex, Grid } from "@chakra-ui/react";
 import TaskColumns from "./components/TaskColumns";
 import React from "react";
 import TaskCard from "./components/TaskCard";
+import { User } from "@/models/User";
 
-function ProjectTaskGrid({ id }: { id: string }) {
-  const tasks = useTaskProject(id);
-
+function ProjectTaskGrid({ id, user }: { id: string; user: User }) {
+  //i would kill for a context but this shit aint workin
   //todo
   //in dev
   //in qa
@@ -18,7 +18,10 @@ function ProjectTaskGrid({ id }: { id: string }) {
   return (
     <Flex gap={4} p={4}>
       {/* Create columns with labels */}
-      <TaskColumns projectId={id} heading="inDev"></TaskColumns>
+      <TaskColumns user={user} projectId={id} heading="TODO" />
+      <TaskColumns user={user} projectId={id} heading="Development" />
+      <TaskColumns user={user} projectId={id} heading="QA" />
+      <TaskColumns user={user} projectId={id} heading="Done" />
     </Flex>
   );
 }

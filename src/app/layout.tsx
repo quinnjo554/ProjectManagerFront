@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import AuthProvider from "./context/AuthProvider";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryProvider } from "./context/ReactQueryProvider";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

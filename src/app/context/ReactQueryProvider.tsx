@@ -1,6 +1,8 @@
 "use client";
+import UserContext from "@/contexts/UserContext";
 import { QueryClientProvider } from "react-query";
 import { QueryClient } from "react-query";
+import ContextProvider from "./ContextProvider";
 export const ReactQueryProvider = ({
   children,
 }: {

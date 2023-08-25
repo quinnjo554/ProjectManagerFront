@@ -6,5 +6,5 @@ export type Task = {
    description?: string;
    priority?: string;
    due_date?: string;
-   assignee_id?: string; 
+   assignee_id?: string;
  }

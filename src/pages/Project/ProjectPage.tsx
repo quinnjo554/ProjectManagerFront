@@ -11,7 +11,7 @@ function Project(props: { user: User; projectId: string }) {
     <Box>
       <DesktopNav user={props.user} />
       {/**<TaskCard description="" name="" assigneeId="1" status=""></TaskCard>**/}
-      <ProjectTaskGrid id={props.projectId} />
+      <ProjectTaskGrid user={props.user} id={props.projectId} />
     </Box>
   );
 }
